@@ -1,26 +1,17 @@
 import {Hello} from './hello';
 
 describe('test', () => {
-  let hello: Hello;
-  beforeEach(() => {
-    hello = new Hello(' typescript ');
+
+  it('mocks methods', () => {
+    const hello = new Hello('init');
+    jest.spyOn(hello, 'getName').mockReturnValue('mocked-value');
+    expect(hello.getName()).toBe('mocked-value')
   })
 
-  it('gets by real getter', () => {
-    expect(hello.name).toBe('typescript');
-  })
-
-  it('spies on getter', () => {
-    jest.spyOn(hello, 'name', 'get').mockReturnValue('mocked-getter');
-    expect(hello.name).toBe('mocked-getter')
-  })
-
-  it('spies on setter', () => {
-    const mocks = {
-      name: jest.spyOn(hello, 'name', 'set')
-    }
-    hello.name = 'new-value'
-    expect(mocks.name).toHaveBeenCalledWith('new-value');
+  it('mocks getter', () => {
+    const hello = new Hello('init');
+    jest.spyOn(hello, 'name', 'get').mockReturnValue('mocked-getter-value')
+    expect(hello.name).toBe('mocked-getter-value')
   })
 
 })

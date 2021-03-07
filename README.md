@@ -1,7 +1,7 @@
-TypeScript Jest Spy on Getter Setter Demo
-===========================
+TypeScript Jest Mock Getter Return Value Demo
+=============================================
 
-Jest对getter/setter也支持spyOn
+`jest.spyOn`也支持`getter/setter`
 
 ```
 npm install
